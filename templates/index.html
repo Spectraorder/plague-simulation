@@ -9,6 +9,21 @@
 </head>
 <body>
 
+    <div class="control-bar">
+        <label for="airborne-rate">Airborne Rate:</label>
+        <input type="range" id="airborne-rate" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <div class="control-bar">
+        <label for="mask-rate">Mask Rate:</label>
+        <input type="range" id="mask-rate" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <div class="control-bar">
+        <label for="activity-rate">Activity Rate:</label>
+        <input type="range" id="activity-rate" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
     <div id="map"></div>
     
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
