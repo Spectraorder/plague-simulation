@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/startBtn.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Plague Simulation</title>
 </head>
@@ -23,6 +24,10 @@
         <label for="activity-rate">Activity Rate:</label>
         <input type="range" id="activity-rate" min="0" max="1" step="0.01" value="0.5">
     </div>
+
+    <button class="button">
+        <span class="button-content">Start Simulation</span>
+    </button>
 
     <div id="map"></div>
     

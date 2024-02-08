@@ -13,10 +13,6 @@ function handleControlChange() {
     var airborneRate = parseFloat(airborneRateControl.value);
     var maskRate = parseFloat(maskRateControl.value);
     var activityRate = parseFloat(activityRateControl.value);
-
-    console.log("Airborne Rate:", airborneRate);
-    console.log("Mask Rate:", maskRate);
-    console.log("Activity Rate:", activityRate);
 }
 
 airborneRateControl.addEventListener('input', handleControlChange);
