@@ -1,4 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+from scipy.integrate import odeint
+
+import numpy as np
 
 app = Flask(__name__)
 
