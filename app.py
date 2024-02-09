@@ -1,6 +1,24 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
+# The SIR model differential equations.
+def sir_model(y, t, beta, gamma):
+    S, I, R = y
+    dSdt = -beta * S * I
+    dIdt = beta * S * I - gamma * I
+    dRdt = gamma * I
+    return dSdt, dIdt, dRdt
+
+def simulate_sir_model(S0, I0, R0, beta, gamma, days):
+    # Initial number of infected and recovered individuals, everyone else is susceptible to infection initially.
+    y0 = S0, I0, R0
+    # A grid of time points (in days)
+    t = np.linspace(0, days, days)
+    # Integrate the SIR equations over the time grid, t.
+    ret = odeint(sir_model, y0, t, args=(beta, gamma))
+    S, I, R = ret.T
+    return t, S, I, R
 
 @app.route("/")
 def hello():
