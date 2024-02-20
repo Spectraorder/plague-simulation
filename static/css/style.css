@@ -1,5 +1,6 @@
 #map {
-    height: 80vh;
+    height: 75vh;
+    z-index: -2;
 }
 
 .control-bar, .input-container, .result-container-a, .result-container-p, .result-container-infect, .button {

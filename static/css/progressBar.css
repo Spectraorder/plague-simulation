@@ -1,0 +1,22 @@
+.progress-loader {
+    bottom: 5%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+  
+.progress-loader {
+    width: 90%;
+    background: rgba(122, 122, 213, 0.253);
+    height: 3px;
+    border-radius: 7px;
+}
+  
+.progress {
+    content: '';
+    width: 0px;
+    height: 3px;
+    border-radius: 7px;
+    background: rgb(187, 16, 16);
+    transition: 0.5s;
+}
