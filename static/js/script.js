@@ -37,9 +37,7 @@ function calculateP() {
 
 function calculateInfection() {
     const a0 = parseFloat(resultA0Display.textContent);
-    console.log(a0);
     const p = parseFloat(resultPDisplay.textContent);
-    console.log(p);
     const a = a0 * p;
     resultInfectDisplay.textContent = a.toFixed(3);
 }
@@ -76,10 +74,13 @@ function startSimulation() {
     })
     .then(response => {
         if (response.ok) {
-            console.log('Simulation started successfully.');
+            return response.json();
         } else {
             console.error('Failed to start simulation.');
         }
+    })
+    .then(simulation_results => {
+        console.log('Simulation results:', simulation_results);
     })
     .catch(error => {
         console.error('Error starting simulation:', error);
