@@ -16,6 +16,7 @@ const activityValueDisplay = document.getElementById('activity-value');
 const numberOfContactsInput = document.getElementById('input');
 
 const resultA0Display = document.getElementById('result-a0-value');
+const resultPDisplay = document.getElementById('result-p-value');
 
 const startBtn = document.getElementById('start-simulation');
 
@@ -23,16 +24,24 @@ function calculateA0() {
     const numberOfContacts = parseFloat(numberOfContactsInput.value);
     const activityRate = parseFloat(activityRateControl.value);
     const a = numberOfContacts * activityRate;
-    console.log(a);
     resultA0Display.textContent = a.toFixed(2);
+}
+
+function calculateP() {
+    const maskRate = parseFloat(maskRateControl.value);
+    const airRate = parseFloat(airborneRateControl.value);
+    const a = (1 - maskRate) * airRate;
+    resultPDisplay.textContent = a.toFixed(2);
 }
 
 airborneRateControl.addEventListener('input', function() {
     airborneValueDisplay.textContent = airborneRateControl.value;
+    calculateP();
 });
 
 maskRateControl.addEventListener('input', function() {
     maskValueDisplay.textContent = maskRateControl.value;
+    calculateP();
 });
 
 activityRateControl.addEventListener('input', function() {
@@ -71,3 +80,4 @@ function startSimulation() {
 startBtn.addEventListener('click', startSimulation);
 
 calculateA0();
+calculateP();

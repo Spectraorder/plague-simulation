@@ -2,7 +2,7 @@
     height: 80vh;
 }
 
-.control-bar, .input-container, .result-container-a, .button {
+.control-bar, .input-container, .result-container-a, .result-container-p, .button {
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
@@ -65,7 +65,12 @@
 .result-container-a {
     position: absolute;
     top: 5%;
-    right: 20%;
+    right: 25%;
 }
 
+.result-container-p {
+    position: absolute;
+    top: 5%;
+    right: 15%;
+}
   
