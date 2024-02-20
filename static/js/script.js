@@ -17,6 +17,7 @@ const numberOfContactsInput = document.getElementById('input');
 
 const resultA0Display = document.getElementById('result-a0-value');
 const resultPDisplay = document.getElementById('result-p-value');
+const resultInfectDisplay = document.getElementById('result-infect-value');
 
 const startBtn = document.getElementById('start-simulation');
 
@@ -30,23 +31,35 @@ function calculateA0() {
 function calculateP() {
     const maskRate = parseFloat(maskRateControl.value);
     const airRate = parseFloat(airborneRateControl.value);
-    const a = (1 - maskRate) * airRate;
+    const a = (1 - 0.8*maskRate) * airRate;
     resultPDisplay.textContent = a.toFixed(2);
+}
+
+function calculateInfection() {
+    const a0 = parseFloat(resultA0Display.textContent);
+    console.log(a0);
+    const p = parseFloat(resultPDisplay.textContent);
+    console.log(p);
+    const a = a0 * p;
+    resultInfectDisplay.textContent = a.toFixed(3);
 }
 
 airborneRateControl.addEventListener('input', function() {
     airborneValueDisplay.textContent = airborneRateControl.value;
     calculateP();
+    calculateInfection()
 });
 
 maskRateControl.addEventListener('input', function() {
     maskValueDisplay.textContent = maskRateControl.value;
     calculateP();
+    calculateInfection()
 });
 
 activityRateControl.addEventListener('input', function() {
     activityValueDisplay.textContent = activityRateControl.value;
     calculateA0();
+    calculateInfection()
 });
 
 function startSimulation() {
@@ -81,3 +94,4 @@ startBtn.addEventListener('click', startSimulation);
 
 calculateA0();
 calculateP();
+calculateInfection();
