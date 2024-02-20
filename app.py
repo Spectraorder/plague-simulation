@@ -1,26 +1,26 @@
 from flask import Flask, render_template, request, jsonify
-from scipy.integrate import odeint
-
 import numpy as np
 
 app = Flask(__name__)
 
-# The SIR model differential equations.
-def sir_model(y, t, beta, gamma):
-    S, I, R = y
-    dSdt = -beta * S * I
-    dIdt = beta * S * I - gamma * I
-    dRdt = gamma * I
-    return dSdt, dIdt, dRdt
+def sir_model(S, I, R, a, b, dt, N):
+    dSdt = -a * S * I / N
+    dIdt = a * S * I / N - b * I
+    dRdt = b * I
+    S += dSdt * dt
+    I += dIdt * dt
+    R += dRdt * dt
+    return S, I, R
 
-def simulate_sir_model(S0, I0, R0, beta, gamma, days):
-    # Initial number of infected and recovered individuals, everyone else is susceptible to infection initially.
-    y0 = S0, I0, R0
-    # A grid of time points (in days)
-    t = np.linspace(0, days, days)
-    # Integrate the SIR equations over the time grid, t.
-    ret = odeint(sir_model, y0, t, args=(beta, gamma))
-    S, I, R = ret.T
+
+def simulate_sir_model(S0, I0, R0, a, b, days, N, dt=1):
+    t = np.arange(0, days, dt)
+    S, I, R = np.zeros(len(t)), np.zeros(len(t)), np.zeros(len(t))
+    S[0], I[0], R[0] = S0, I0, R0
+
+    for i in range(1, len(t)):
+        S[i], I[i], R[i] = sir_model(S[i - 1], I[i - 1], R[i - 1], a, b, dt, N)
+
     return t, S, I, R
 
 @app.route("/")
@@ -38,6 +38,18 @@ def start_simulation():
     # print("Airborne Rate:", airborne_rate)
     # print("Mask Rate:", mask_rate)
     # print("Activity Rate:", activity_rate)
+
+    # N = int(request.form.get("population", 1000))
+    # I0 = int(request.form.get("infected", 1))
+    # R0 = int(request.form.get("recovered", 0))
+    # S0 = N - I0 - R0
+    # a = float(request.form.get("a", 0.2))  # Infection rate 'a'
+    # b = float(request.form.get("b", 0.1))  # Recovery rate 'b'
+    # days = int(request.form.get("days", 160))
+
+    # t, S, I, R = simulate_sir_model(S0, I0, R0, a, b, days, N)
+    # # Convert numpy arrays to lists for JSON compatibility
+    # results = {"t": t.tolist(), "S": S.tolist(), "I": I.tolist(), "R": R.tolist()}
 
     return jsonify({'message': 'Simulation started successfully.'}), 200
 
