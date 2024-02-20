@@ -50,8 +50,10 @@ def start_simulation():
         't': t.tolist(),
         'S': S.tolist(),
         'I': I.tolist(),
-        'R': R.tolist()
+        'R': R.tolist(),
+        'N': N
     }
+    print(S/N)
 
     return jsonify(simulation_results)
 
