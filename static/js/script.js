@@ -63,9 +63,7 @@ activityRateControl.addEventListener('input', function() {
 });
 
 function startSimulation() {
-    var airborneRate = parseFloat(airborneRateControl.value);
-    var maskRate = parseFloat(maskRateControl.value);
-    var activityRate = parseFloat(activityRateControl.value);
+    var infectivityA = resultInfectDisplay.textContent;
 
     fetch('/start-simulation', {
         method: 'POST',
@@ -73,9 +71,7 @@ function startSimulation() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            airborneRate: airborneRate,
-            maskRate: maskRate,
-            activityRate: activityRate
+            infectivity: infectivityA
         })
     })
     .then(response => {

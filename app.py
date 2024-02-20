@@ -31,9 +31,11 @@ def hello():
 def start_simulation():
     data = request.json
 
-    airborne_rate = data.get('airborneRate')
-    mask_rate = data.get('maskRate')
-    activity_rate = data.get('activityRate')
+    infectivity = data.get('infectivity')
+
+    # airborne_rate = data.get('airborneRate')
+    # mask_rate = data.get('maskRate')
+    # activity_rate = data.get('activityRate')
 
     # print("Airborne Rate:", airborne_rate)
     # print("Mask Rate:", mask_rate)
