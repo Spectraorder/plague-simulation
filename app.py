@@ -39,7 +39,7 @@ def start_simulation():
         infectivity = float(infectivity)
     except ValueError:
         return jsonify({'error': 'Invalid infectivity value. Must be a float.'}), 400
-    recovery_rate = 0.1  # Recovery rate
+    recovery_rate = 0.02  # Recovery rate
     days = 100  # Total duration of simulation
     N = 1000  # Total population
     dt = 1  # Time step

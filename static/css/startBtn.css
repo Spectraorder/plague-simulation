@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-.button {
+.start-button {
     position: absolute;
     top: 5%;
     left: 50%;
@@ -16,18 +16,18 @@
     cursor: pointer;
 }
 
-.button:hover::before {
+.start-button:hover::before {
     transform: scaleX(1);
 }
 
-.button-content {
+.start-button-content {
     position: relative;
     z-index: 1;
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
 }
 
-.button::before {
+.start-button::before {
     content: "";
     position: absolute;
     top: 0;

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/startBtn.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/progressBar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fast.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Plague Simulation</title>
 </head>
@@ -50,11 +51,34 @@
         <span class="value-display" id="result-infect-value">0.625</span>
     </div>
 
-    <button class="button" id="start-simulation">
-        <span class="button-content">Start Simulation</span>
+    <button class="start-button" id="start-simulation">
+        <span class="start-button-content">Start Simulation</span>
     </button>
 
     <div id="map"></div>
+
+    <div class="container">
+        <input id="checkbox" type="checkbox">
+        <label class="button" for="checkbox">
+            <span class="icon">
+                <svg fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 20.465 20.465" xml:space="preserve">
+                    <g>
+                        <g id="c91_rewind">
+                            <path d="M9.112,1.372c0.139-0.069,0.303-0.049,0.424,0.045l10.776,8.501c0.094,0.076,0.153,0.191,0.153,0.312
+                                s-0.06,0.24-0.153,0.314L9.536,19.047c-0.071,0.056-0.163,0.088-0.248,0.088l-0.176-0.042c-0.138-0.064-0.226-0.204-0.226-0.359
+                                V1.732C8.887,1.58,8.975,1.437,9.112,1.372z"/>
+                            <path d="M0.225,1.372C0.364,1.303,0.529,1.323,0.65,1.417l10.776,8.501c0.093,0.076,0.152,0.191,0.152,0.312
+                                s-0.06,0.24-0.152,0.314L0.649,19.047c-0.073,0.056-0.163,0.088-0.249,0.088l-0.176-0.042C0.088,19.028,0,18.889,0,18.733V1.732
+                                C0,1.58,0.088,1.437,0.225,1.372z"/>
+                        </g>
+                        <g id="Capa_1_90_">
+                        </g>
+                    </g>
+                </svg>
+            </span> 
+        </label> 
+    </div>
 
     <div class="progress-loader">
         <div class="progress"></div>
