@@ -53,7 +53,7 @@ def start_simulation():
         'R': R.tolist(),
         'N': N
     }
-    print(S/N)
+    # print(I/N)
 
     return jsonify(simulation_results)
 
